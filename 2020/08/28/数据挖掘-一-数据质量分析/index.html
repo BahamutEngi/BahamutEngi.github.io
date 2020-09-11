@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, BahamutEngi Blog">
+    <meta name="keywords" content="数据挖掘(一) 数据质量分析, BahamutEngi Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | BahamutEngi Blog</title>
+    <title>数据挖掘(一) 数据质量分析 | BahamutEngi Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">数据挖掘(一) 数据质量分析</h1>
                 </div>
             </div>
         </div>
@@ -442,7 +442,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-08-27
+                    2020-08-28
                 </div>
                 
 
@@ -451,7 +451,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    73
+                    1k
                 </div>
                 
 
@@ -463,19 +463,90 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-lang-bash"><code class="language-lang-bash">$ hexo new "My New Post"
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-lang-bash"><code class="language-lang-bash">$ hexo server
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-lang-bash"><code class="language-lang-bash">$ hexo generate
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-lang-bash"><code class="language-lang-bash">$ hexo deploy
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <p>数据质量分析的主要任务是检查原始数据中是否存在脏数据，脏数据一般指不符合要求，以及不能直接进行相应分析的数据。常见的脏数据包括：</p>
+<ul>
+<li>缺失值</li>
+<li>异常值</li>
+<li>不一致的值</li>
+<li>重复数据以及包含特殊符号的数据<h2 id="1-缺失值分析"><a href="#1-缺失值分析" class="headerlink" title="1. 缺失值分析"></a>1. 缺失值分析</h2></li>
+<li>缺失值产生的原因</li>
+</ul>
+<ol>
+<li>有些信息暂时无法获取，或者获取信息的代价太大。</li>
+<li>有些信息被遗漏，包括人为因素和物理故障。</li>
+<li>属性值不存在。缺失值并不一定意味着数据错误，一些对象的某些属性值是不存在的，比如小孩的固定收入。</li>
+</ol>
+<ul>
+<li>缺失值的影响</li>
+</ul>
+<ol>
+<li>进行建模时将丢失有用信息。</li>
+<li>模型的不确定性增加。</li>
+<li>有些模型不能处理缺失值。</li>
+</ol>
+<ul>
+<li>缺失值的分析</li>
+</ul>
+<p>使用统计分析可以得到含有缺失值的属性个数等信息。</p>
+<h2 id="2-异常值（离群点）分析"><a href="#2-异常值（离群点）分析" class="headerlink" title="2. 异常值（离群点）分析"></a>2. 异常值（离群点）分析</h2><ul>
+<li>异常值分析是为了检测数据是否有录入错误或者不合理的数据。</li>
+<li>常见的异常值分析方法有简单统计分析、3$\sigma$原则和箱型图分析。<h3 id="（1）简单统计分析"><a href="#（1）简单统计分析" class="headerlink" title="（1）简单统计分析"></a>（1）简单统计分析</h3>最常用的统计量是最大值和最小值，判断变量中的数据是不是超出了合理的范围。<h3 id="（2）3-sigma-原则"><a href="#（2）3-sigma-原则" class="headerlink" title="（2）3$\sigma$原则"></a>（2）3$\sigma$原则</h3>如果数据服从正态分布，在3$\sigma$原则下，异常值被定义为一组测定值中与平均值的偏差超过三倍标准差的值。<h3 id="（3）箱型图分析"><a href="#（3）箱型图分析" class="headerlink" title="（3）箱型图分析"></a>（3）箱型图分析</h3>箱型图提供了识别异常值的一个新标准。箱型图依赖实际数据绘制，不要求数据服从何种分布；且判断异常值以四分位数和四分位数间距为基础，具有一定的鲁棒性。</li>
+</ul>
+<p><img src="/2020/08/28/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E4%B8%80-%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F%E5%88%86%E6%9E%90/xiangxingtu.bmp" alt="箱型图识别异常值"></p>
+<p>$Q_L$称为下四分位，表示全部观察值中有四分之一的数据取值比它小；</p>
+<p>$Q_U$称为上四分位，表示全部观察值中有四分之一的数据取值比它大；</p>
+<p>$IQR$称为四分位数间距，是上下四分位数之差，其间包含了所有观察值的一半；</p>
+<p>异常值通常定义为小于$Q_L-1.5IQR$或大于$Q_U+1.5IQR$的值</p>
+<h2 id="3-一致性分析"><a href="#3-一致性分析" class="headerlink" title="3. 一致性分析"></a>3. 一致性分析</h2><p>数据不一致是指数据的矛盾性、不相容性。<br>在数据挖掘的过程中，不一致数据的产生主要发生在数据集成过程中，被挖掘数据来自不同的数据源，对于重新存放的数据未能进行一致性更新。</p>
+<p>比如两张表中都存储了用户的电话号码，但在电话号码改变时只更新了一张表的数据，那么这两张表的数据就出现了不一致。</p>
+<h2 id="4-箱型图分析的python实现"><a href="#4-箱型图分析的python实现" class="headerlink" title="4. 箱型图分析的python实现"></a>4. 箱型图分析的python实现</h2><p>数据采用配套例程中的餐饮销量数据，其部分数据如下表所示，其中某些数据存在缺失值。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">日期</th>
+<th style="text-align:center">销量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">2015/2/15</td>
+<td style="text-align:center">2699.3</td>
+</tr>
+<tr>
+<td style="text-align:center">2015/2/14</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">2015/2/13</td>
+<td style="text-align:center">3036.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<pre><code>import matplotlib.pyplot as plt
+import pandas as pd
+catering_sale = &#39;chapter3_catering_sale.xls&#39;
+data = pd.read_excel(catering_sale, index_col = u&#39;日期&#39;)
+plt.rcParams[&#39;font.sans-serif&#39;] = [&#39;simhei&#39;] # 用来正常显示中文标签
+plt.rcParams[&#39;axes.unicode_minus&#39;] = False # 用来正常显示负号
+
+plt.figure()
+p = data.boxplot(return_type=&#39;dict&#39;) #画箱线图，直接使用DataFrame的方法
+x = p[&#39;fliers&#39;][0].get_xdata() # &#39;flies&#39;即为异常值的标签
+y = p[&#39;fliers&#39;][0].get_ydata()
+y.sort() #从小到大排序，该方法直接改变原对象
+
+# 用annotate添加注释
+# 其中有些相似的点，注解会出现重叠，难以看清，需要一些技巧来控制
+# 以下参数都是经过调试的，需要具体问题具体调试
+for i in range(len(x)):
+    if i &gt; 0:
+        plt.annotate(y[i], xy = (x[i], y[i]), xytext=(x[i] + 0.05 -0.8/(y[i] - y[i - 1]), y[i]))
+    else:
+        plt.annotate(y[i], xy = (x[i], y[i]), xytext=(x[i] + 0.08, y[i]))
+plt.show()  # 展示箱型图
+</code></pre><p><img src="/2020/08/28/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E4%B8%80-%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F%E5%88%86%E6%9E%90/xiangxingtufenxi.bmp" alt="箱型图结果"></p>
 
             </div>
             <hr/>
@@ -501,7 +572,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://bahamutengi.github.io/2020/08/27/hello-world/">http://bahamutengi.github.io/2020/08/27/hello-world/</a>
+                    <a href="http://bahamutengi.github.io/2020/08/28/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E4%B8%80-%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F%E5%88%86%E6%9E%90/">http://bahamutengi.github.io/2020/08/28/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E4%B8%80-%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F%E5%88%86%E6%9E%90/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -704,9 +775,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/08/28/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E4%B8%80-%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F%E5%88%86%E6%9E%90/">
                     <div class="card-image">
@@ -733,9 +805,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -744,6 +816,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -751,7 +824,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2020/08/27/hello-world/">
@@ -781,7 +854,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -916,6 +988,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
